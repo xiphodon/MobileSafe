@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:siv="http://schemas.android.com/apk/res/com.gc.p01_mobilesafe"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView
+        style="@style/TitleStyle"
+        android:text="进程管理设置" />
+     
+     <com.gc.p01_mobilesafe.view.SettingItemView
+         android:id="@+id/siv_showSystemProcess"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content" 
+         siv:title="显示系统应用"
+         siv:desc_on="系统应用已显示"
+         siv:desc_off="系统应用已隐藏"/>
+     
+     <com.gc.p01_mobilesafe.view.SettingItemView
+         android:id="@+id/siv_timingKillProcess"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content" 
+         siv:title="锁屏清理进程"
+         siv:desc_on="锁屏清理进程已开启"
+         siv:desc_off="锁屏清理进程已关闭"/>
+
+</LinearLayout>

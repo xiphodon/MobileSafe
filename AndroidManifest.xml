@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.gc.p01_mobilesafe"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="18" />
+    
+     <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:targetPackage="com.gc.p01_mobilesafe" >
+    </instrumentation>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.READ_CALL_LOG"/>
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <uses-library android:name="android.test.runner" />
+
+        <activity
+            android:name="com.gc.p01_mobilesafe.activity.SplashActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.gc.p01_mobilesafe.activity.HomeActivity" >
+        </activity>
+        <activity android:name="com.gc.p01_mobilesafe.activity.SettingActivity" >
+        </activity>
+        <activity android:name="com.gc.p01_mobilesafe.activity.LostFindActivity" >
+        </activity>
+        <activity android:name="com.gc.p01_mobilesafe.activity.Setup1Activity" >
+        </activity>
+        <activity android:name="com.gc.p01_mobilesafe.activity.Setup2Activity" >
+        </activity>
+        <activity android:name="com.gc.p01_mobilesafe.activity.Setup3Activity" >
+        </activity>
+        <activity android:name="com.gc.p01_mobilesafe.activity.Setup4Activity" >
+        </activity>
+        <activity android:name="com.gc.p01_mobilesafe.activity.ContactsActivity" >
+        </activity>
+        <activity android:name="com.gc.p01_mobilesafe.activity.AToolsActivity" >
+        </activity>
+        <activity android:name="com.gc.p01_mobilesafe.activity.AddressActivity" >
+        </activity>
+        <activity
+            android:name="com.gc.p01_mobilesafe.activity.DragAddressViewActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+        <activity android:name="com.gc.p01_mobilesafe.activity.CallSafeActivity" >
+        </activity>
+        <activity android:name="com.gc.p01_mobilesafe.activity.CallSafeActivity2" >
+        </activity>
+        <activity android:name="com.gc.p01_mobilesafe.activity.AppManagerActivity" >
+        </activity>
+        <activity android:name="com.gc.p01_mobilesafe.activity.TaskManagerActivity" >
+        </activity>
+        <activity android:name="com.gc.p01_mobilesafe.activity.TaskManagerSettingActivity">
+        </activity>
+        <activity android:name="com.gc.p01_mobilesafe.activity.AntivirusActivity">
+        </activity>
+
+        <receiver android:name="com.gc.p01_mobilesafe.receiver.BootCompleteReceiver" >
+            <intent-filter android:priority="2147483647" >
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.gc.p01_mobilesafe.receiver.SmsReceiver" >
+
+            <!-- priority = 1000为最高优先级    但是也是可以设置成int的最大值，可以为最高优先级，且大于1000的优先级 -->
+            <intent-filter android:priority="2147483647" >
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+        <!--
+       去电监听广播(采用动态注册)
+       <receiver android:name="com.gc.p01_mobilesafe.receiver.OutCallReceiver">
+            <intent-filter >
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL"/>
+            </intent-filter>
+        </receiver> 
+        -->
+
+
+        <!-- 设备策略服务,设备管理组件 -->
+        <receiver
+            android:name="com.gc.p01_mobilesafe.receiver.AdminReceiver"
+            android:description="@string/sample_device_admin_description"
+            android:label="@string/sample_device_admin"
+            android:permission="android.permission.BIND_DEVICE_ADMIN" >
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/device_admin_sample" />
+
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+        <!-- 桌面小部件 必须配置  1,新建广播接收者，2，新建xml文件夹，创建元数据-->
+        <receiver android:name="com.gc.p01_mobilesafe.receiver.MyAppWidgetProvider" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/example_appwidget_info" />
+        </receiver>
+        <receiver android:name="com.gc.p01_mobilesafe.receiver.KillAllProcessReceiver">
+            <intent-filter >
+                <action android:name="KillAllProcess"/>
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.gc.p01_mobilesafe.service.LocationService" >
+        </service>
+        <service android:name="com.gc.p01_mobilesafe.service.AddressService" >
+        </service>
+        <service android:name="com.gc.p01_mobilesafe.service.CallSafeService" >
+        </service>
+        <service android:name="com.gc.p01_mobilesafe.service.KillProcessService">
+        </service>
+        <service android:name="com.gc.p01_mobilesafe.service.KillProcessAppWidgetService">
+        </service>
+    </application>
+
+</manifest>
