@@ -15,6 +15,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.SystemClock;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.animation.Animation;
@@ -49,17 +50,21 @@ public class AntivirusActivity extends Activity {
 				break;
 
 			case SCANING:
+				
+				tv_init_virus.setText("病毒查杀中...");
 
 				TextView child = new TextView(AntivirusActivity.this);
 				ScanInfo scanInfo = (ScanInfo) msg.obj;
 				// 如果为true表示有病毒
 				if (scanInfo.desc) {
-					child.setTextColor(Color.RED);
 					child.setText(scanInfo.appName + "——发现病毒");
+					child.setTextColor(Color.RED);
+					child.setTextSize(16);
 				} else {
-					child.setTextColor(Color.BLACK);
-					// // 为false表示没有病毒
+					//  为false表示没有病毒
 					child.setText(scanInfo.appName + "——扫描安全");
+					child.setTextColor(Color.BLACK);
+					child.setTextSize(16);
 				}
 				ll_antivirus_content.addView(child, 0);
 				// 自动滚动
@@ -79,6 +84,7 @@ public class AntivirusActivity extends Activity {
 			case FINISH:
 				// 扫描结束后，停止转动动画
 				iv_scanning.clearAnimation();
+				tv_init_virus.setText("查杀完毕");
 				break;
 
 			}
@@ -111,6 +117,8 @@ public class AntivirusActivity extends Activity {
 				message = Message.obtain();
 				message.what = BEGING;
 				handler.sendMessage(message);
+				
+				SystemClock.sleep(1500);
 
 				ScanInfo scanInfo = new ScanInfo();
 				// 获得包管理者
@@ -141,6 +149,8 @@ public class AntivirusActivity extends Activity {
 
 					String desc = AntivirusDAO.checkFileVirus(fileMD5);
 
+					System.out.println(appName + "___" + fileMD5);
+					
 					if (TextUtils.isEmpty(desc)) {
 						scanInfo.desc = false;
 					} else {

@@ -38,6 +38,7 @@ public class AntivirusDAO {
 			desc = cursor.getString(0);
 		}
 		cursor.close();
+		database.close();
 		return desc;
 	}
 
@@ -51,7 +52,7 @@ public class AntivirusDAO {
 	 */
 	public static void addVirus(String md5, String desc) {
 		SQLiteDatabase db = SQLiteDatabase.openDatabase(
-				"/data/data/com.itheima.mobileguard/files/antivirus.db", null,
+				"data/data/com.gc.p01_mobilesafe/files/antivirus.db", null,
 				SQLiteDatabase.OPEN_READWRITE);
 
 		ContentValues values = new ContentValues();
@@ -60,7 +61,7 @@ public class AntivirusDAO {
 
 		values.put("type", 6);
 
-		values.put("name", "test");
+		values.put("name", "Android.Hack.CarrierIQ.a");
 
 		values.put("desc", desc);
 

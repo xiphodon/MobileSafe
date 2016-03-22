@@ -12,11 +12,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.gc.p01_mobilesafe.R;
+import com.gc.p01_mobilesafe.bean.Virus;
+import com.gc.p01_mobilesafe.db.dao.AntivirusDAO;
 import com.gc.p01_mobilesafe.utils.StreamUtils;
+import com.google.gson.Gson;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -98,6 +102,7 @@ public class SplashActivity extends Activity {
 	private SharedPreferences mPref;
 	private RelativeLayout rl_root;
 	private InputStream in;
+	private AntivirusDAO antivirusDAO;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -117,16 +122,15 @@ public class SplashActivity extends Activity {
 		copyDB("address.db");
 		// 拷贝assets下的病毒数据库
 		copyDB("antivirus.db");
-		//更新病毒库
+		// 更新病毒库
 		updataVirus();
 
-		//第一次运行程序时创建快捷方式
+		// 第一次运行程序时创建快捷方式
 		boolean frist_launcher = mPref.getBoolean("frist_launcher", true);
-		if(frist_launcher){
+		if (frist_launcher) {
 			// 创建快捷方式
 			createShortcut();
 		}
-		
 
 		// 判断是否检查更新版本
 		boolean autoUpdate = mPref.getBoolean("auto_update", false);
@@ -147,8 +151,44 @@ public class SplashActivity extends Activity {
 	 * 更新病毒库
 	 */
 	private void updataVirus() {
-		// TODO Auto-generated method stub
-		
+
+		antivirusDAO = new AntivirusDAO();
+		// xUtils包
+		HttpUtils httpUtils = new HttpUtils();
+		String url = "http://10.0.2.2:8080/virus.json";
+		httpUtils.send(HttpMethod.GET, url, new RequestCallBack<String>() {
+
+			@Override
+			public void onFailure(HttpException arg0, String arg1) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onSuccess(ResponseInfo<String> arg0) {
+				// TODO Auto-generated method stub
+				// System.out.println(arg0.result);
+
+				try {
+					JSONObject jsonObject = new JSONObject(arg0.result);
+
+					//google gson 解析json
+					Gson gson = new Gson();
+					// 解析json
+					Virus virus = gson.fromJson(arg0.result, Virus.class);
+
+					// String md5 = jsonObject.getString("md5");
+					//
+					// String desc = jsonObject.getString("desc");
+
+					antivirusDAO.addVirus(virus.md5, virus.desc);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+				System.out.println("病毒数据库更新成功");
+			}
+		});
 	}
 
 	/**
@@ -180,7 +220,7 @@ public class SplashActivity extends Activity {
 
 		// 5.发送广播
 		sendBroadcast(intent);
-		
+
 		mPref.edit().putBoolean("frist_launcher", false).commit();
 	}
 
