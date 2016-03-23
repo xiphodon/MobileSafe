@@ -87,6 +87,8 @@
         </activity>
         <activity android:name="com.gc.p01_mobilesafe.activity.AntivirusActivity">
         </activity>
+        <activity android:name="com.gc.p01_mobilesafe.activity.AppLockActivity">
+        </activity>
 
         <receiver android:name="com.gc.p01_mobilesafe.receiver.BootCompleteReceiver" >
             <intent-filter android:priority="2147483647" >
