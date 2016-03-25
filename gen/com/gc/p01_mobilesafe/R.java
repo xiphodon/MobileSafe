@@ -116,15 +116,15 @@ containing a value of this type.
         public static final int widget_bg_portrait_child_divider=0x7f020039;
     }
     public static final class id {
-        public static final int action_settings=0x7f0c0051;
+        public static final int action_settings=0x7f0c0052;
         public static final int btn_cancel=0x7f0c003d;
-        public static final int btn_clear=0x7f0c0047;
+        public static final int btn_clear=0x7f0c0048;
         public static final int btn_ok=0x7f0c003c;
         public static final int cb_phone=0x7f0c003a;
-        public static final int cb_process_status=0x7f0c0049;
+        public static final int cb_process_status=0x7f0c004a;
         public static final int cb_protect=0x7f0c0021;
         public static final int cb_sms=0x7f0c003b;
-        public static final int cb_status=0x7f0c0050;
+        public static final int cb_status=0x7f0c0051;
         public static final int et_add_number=0x7f0c0039;
         public static final int et_number=0x7f0c0000;
         public static final int et_pageNumber=0x7f0c0010;
@@ -138,9 +138,10 @@ containing a value of this type.
         public static final int iv_drag=0x7f0c0015;
         public static final int iv_icon=0x7f0c0030;
         public static final int iv_item=0x7f0c0041;
+        public static final int iv_lock=0x7f0c0045;
         public static final int iv_protect=0x7f0c0018;
         public static final int iv_scanning=0x7f0c0002;
-        public static final int iv_unlock=0x7f0c004d;
+        public static final int iv_unlock=0x7f0c004e;
         public static final int ll_ProgressBar=0x7f0c000c;
         public static final int ll_antivirus_content=0x7f0c0006;
         public static final int ll_detail=0x7f0c002f;
@@ -153,10 +154,10 @@ containing a value of this type.
         public static final int lv_list=0x7f0c0012;
         public static final int lv_lock=0x7f0c0044;
         public static final int lv_process=0x7f0c0027;
-        public static final int lv_unlock=0x7f0c004c;
+        public static final int lv_unlock=0x7f0c004d;
         public static final int pb_antivirus_progress=0x7f0c0004;
-        public static final int process_count=0x7f0c0045;
-        public static final int process_memory=0x7f0c0046;
+        public static final int process_count=0x7f0c0046;
+        public static final int process_memory=0x7f0c0047;
         public static final int rl_root=0x7f0c0022;
         public static final int siav_addressLocation=0x7f0c001c;
         public static final int siav_addressStyle=0x7f0c001b;
@@ -168,19 +169,19 @@ containing a value of this type.
         public static final int siv_update=0x7f0c0019;
         public static final int sv_scrollView=0x7f0c0005;
         public static final int textView1=0x7f0c003e;
-        public static final int tv_address=0x7f0c004a;
+        public static final int tv_address=0x7f0c004b;
         public static final int tv_addressResult=0x7f0c0001;
         public static final int tv_apkLocation=0x7f0c0032;
         public static final int tv_apkName=0x7f0c0031;
         public static final int tv_apkSize=0x7f0c0033;
         public static final int tv_appTitle=0x7f0c000e;
         public static final int tv_bottom=0x7f0c0014;
-        public static final int tv_desc=0x7f0c004f;
+        public static final int tv_desc=0x7f0c0050;
         public static final int tv_init_virus=0x7f0c0003;
         public static final int tv_item=0x7f0c0042;
         public static final int tv_lock=0x7f0c0008;
         public static final int tv_lock_grament=0x7f0c0043;
-        public static final int tv_memory_size=0x7f0c0048;
+        public static final int tv_memory_size=0x7f0c0049;
         public static final int tv_mode=0x7f0c0035;
         public static final int tv_name=0x7f0c0037;
         public static final int tv_number=0x7f0c0034;
@@ -193,10 +194,10 @@ containing a value of this type.
         public static final int tv_showPage=0x7f0c0011;
         public static final int tv_task_memory=0x7f0c0026;
         public static final int tv_task_process_count=0x7f0c0025;
-        public static final int tv_title=0x7f0c004e;
+        public static final int tv_title=0x7f0c004f;
         public static final int tv_top=0x7f0c0013;
         public static final int tv_unlock=0x7f0c0007;
-        public static final int tv_unlock_grament=0x7f0c004b;
+        public static final int tv_unlock_grament=0x7f0c004c;
         public static final int tv_version=0x7f0c0023;
     }
     public static final class layout {
@@ -229,13 +230,14 @@ containing a value of this type.
         public static final int home_list_item=0x7f03001a;
         public static final int list_view=0x7f03001b;
         public static final int lock_fragment=0x7f03001c;
-        public static final int process_widget=0x7f03001d;
-        public static final int taskmanager_list_item=0x7f03001e;
-        public static final int toast_myview_address=0x7f03001f;
-        public static final int unlock_fragment=0x7f030020;
-        public static final int unlock_list_item=0x7f030021;
-        public static final int view_setting_item=0x7f030022;
-        public static final int view_setting_item_arrow=0x7f030023;
+        public static final int lock_list_item=0x7f03001d;
+        public static final int process_widget=0x7f03001e;
+        public static final int taskmanager_list_item=0x7f03001f;
+        public static final int toast_myview_address=0x7f030020;
+        public static final int unlock_fragment=0x7f030021;
+        public static final int unlock_list_item=0x7f030022;
+        public static final int view_setting_item=0x7f030023;
+        public static final int view_setting_item_arrow=0x7f030024;
     }
     public static final class menu {
         public static final int main=0x7f0b0000;

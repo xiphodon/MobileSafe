@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
- * 查询病毒数据库
+ * 病毒数据库
  * 
  * @author guochang
  * 
