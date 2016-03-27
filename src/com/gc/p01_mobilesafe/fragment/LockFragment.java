@@ -7,8 +7,6 @@ import com.gc.p01_mobilesafe.R;
 import com.gc.p01_mobilesafe.bean.AppInfo;
 import com.gc.p01_mobilesafe.db.dao.AppLockDAO;
 import com.gc.p01_mobilesafe.engine.AppInfos;
-import com.gc.p01_mobilesafe.fragment.UnLockFragment.ViewHolder;
-
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v4.app.Fragment;
@@ -154,7 +152,7 @@ public class LockFragment extends Fragment {
 								@Override
 								public void run() {
 									// 从加锁数据库中删除
-									appLockDAO.delect(appInfo.getApkPackageName());
+									appLockDAO.delete(appInfo.getApkPackageName());
 									// 移除当前界面集合
 									lockList.remove(position);
 									// 更新当前界面

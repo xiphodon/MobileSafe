@@ -6,9 +6,11 @@ import com.gc.p01_mobilesafe.utils.SmsUtils;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Looper;
 import android.os.SystemClock;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
@@ -77,7 +79,14 @@ public class AToolsActivity extends Activity {
 	 * @param view
 	 */
 	public void appLock(View view){
-		Intent intent = new Intent(this,AppLockActivity.class);
-		startActivity(intent);
+		SharedPreferences mPref = getSharedPreferences("config", MODE_PRIVATE);
+		String appLock_pwd = mPref.getString("applock_pwd", "");
+		if(TextUtils.isEmpty(appLock_pwd)){
+			startActivity(new Intent(this,EnterPwdActivity.class));
+		}else{
+			Intent intent = new Intent(this,AppLockActivity.class);
+			startActivity(intent);
+		}
+		
 	}
 }

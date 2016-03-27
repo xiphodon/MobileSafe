@@ -34,7 +34,7 @@ public class AppLockDAO {
 	 * 从数据库删除应用包名
 	 * @param packageName
 	 */
-	public void delect(String packageName){
+	public void delete(String packageName){
 		SQLiteDatabase db = helper.getWritableDatabase();
 		db.delete("applock", "packagename=?", new String[]{packageName});
 		db.close();

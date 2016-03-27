@@ -3,6 +3,7 @@ package com.gc.p01_mobilesafe.activity;
 import com.gc.p01_mobilesafe.R;
 import com.gc.p01_mobilesafe.service.AddressService;
 import com.gc.p01_mobilesafe.service.CallSafeService;
+import com.gc.p01_mobilesafe.service.WatchDogService;
 import com.gc.p01_mobilesafe.utils.SystemInfoUtils;
 import com.gc.p01_mobilesafe.view.SettingItemArrowView;
 import com.gc.p01_mobilesafe.view.SettingItemView;
@@ -47,6 +48,7 @@ public class SettingActivity extends Activity {
 		initAddressStyle();
 		initAddressLocation();
 		initBlackNumberView();
+		initWatchDogView();
 	}
 	
 
@@ -126,6 +128,7 @@ public class SettingActivity extends Activity {
 	
 	//设置单选框选项
 	final String[] items = new String[]{"半透明","活力橙","天空蓝","金属灰","苹果绿"};
+	private SettingItemView siv_watchdog;
 	
 	/**
 	 * 初始化归属地浮窗显示风格
@@ -228,6 +231,43 @@ public class SettingActivity extends Activity {
 					siv_callsafe.setChecked(true);
 					//开启归属地服务
 					startService(new Intent(SettingActivity.this, CallSafeService.class));
+				}
+			}
+		});
+	}
+	
+	
+	
+	/**
+	 * 初始化软件锁看门狗设置
+	 */
+	private void initWatchDogView() {
+		// TODO Auto-generated method stub
+		
+		siv_watchdog = (SettingItemView) findViewById(R.id.siv_watchdog);
+		
+		//归属地显示服务是否运行
+		boolean serviceRuning = SystemInfoUtils.isServiceRuning(SettingActivity.this,"com.gc.p01_mobilesafe.service.WatchDogService");
+		
+		if(serviceRuning){
+			siv_watchdog.setChecked(true);
+		}else{
+			siv_watchdog.setChecked(false);
+		}
+		
+		siv_watchdog.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if(siv_watchdog.isChecked()){
+					siv_watchdog.setChecked(false);
+					//停止归属地服务
+					stopService(new Intent(SettingActivity.this, WatchDogService.class));
+				}else{
+					siv_watchdog.setChecked(true);
+					//开启归属地服务
+					startService(new Intent(SettingActivity.this, WatchDogService.class));
 				}
 			}
 		});

@@ -45,4 +45,12 @@
          siv:title="黑名单拦截设置"
          siv:desc_on="黑名单拦截已开启"
          siv:desc_off="黑名单拦截已关闭"/>
+     
+     <com.gc.p01_mobilesafe.view.SettingItemView
+         android:id="@+id/siv_watchdog"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content" 
+         siv:title="软件锁设置"
+         siv:desc_on="软件锁已开启"
+         siv:desc_off="软件锁已关闭"/>
 </LinearLayout>
