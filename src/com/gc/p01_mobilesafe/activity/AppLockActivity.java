@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
@@ -29,6 +30,8 @@ public class AppLockActivity extends FragmentActivity implements
 	private FragmentManager fragmentManager;
 	private UnLockFragment unLockFragment;
 	private LockFragment lockFragment;
+	private LinearLayout ll_ProgressBar;
+	private LinearLayout ll_showApps;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -48,6 +51,8 @@ public class AppLockActivity extends FragmentActivity implements
 		fl_layout = (FrameLayout) findViewById(R.id.fl_layout);
 		tv_unlock = (TextView) findViewById(R.id.tv_unlock);
 		tv_lock = (TextView) findViewById(R.id.tv_lock);
+		ll_ProgressBar = (LinearLayout) findViewById(R.id.ll_ProgressBar);
+		ll_showApps = (LinearLayout) findViewById(R.id.ll_showApps);
 
 		tv_unlock.setOnClickListener(this);
 		tv_lock.setOnClickListener(this);
@@ -60,10 +65,14 @@ public class AppLockActivity extends FragmentActivity implements
 		lockFragment = new LockFragment();
 		// 把内容显示至帧布局,并提交
 		mTransaction.replace(R.id.fl_layout, unLockFragment).commit();
+		ll_ProgressBar.setVisibility(View.INVISIBLE);
+		ll_showApps.setVisibility(View.VISIBLE);
 	}
 
 	@Override
 	public void onClick(View v) {
+		ll_ProgressBar.setVisibility(View.VISIBLE);
+		ll_showApps.setVisibility(View.INVISIBLE);
 
 		// 开启事务
 		FragmentTransaction mTransaction = fragmentManager.beginTransaction();
@@ -78,6 +87,9 @@ public class AppLockActivity extends FragmentActivity implements
 			// 把内容显示至帧布局,并提交
 			mTransaction.replace(R.id.fl_layout, unLockFragment).commit();
 
+			ll_ProgressBar.setVisibility(View.INVISIBLE);
+			ll_showApps.setVisibility(View.VISIBLE);
+			
 			break;
 
 		case R.id.tv_lock:
@@ -87,6 +99,9 @@ public class AppLockActivity extends FragmentActivity implements
 
 			// 把内容显示至帧布局,并提交
 			mTransaction.replace(R.id.fl_layout, lockFragment).commit();
+			
+			ll_ProgressBar.setVisibility(View.INVISIBLE);
+			ll_showApps.setVisibility(View.VISIBLE);
 
 			break;
 
