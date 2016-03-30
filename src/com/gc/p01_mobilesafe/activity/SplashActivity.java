@@ -11,6 +11,8 @@ import java.net.URL;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import cn.waps.AppConnect;
+
 import com.gc.p01_mobilesafe.R;
 import com.gc.p01_mobilesafe.bean.Virus;
 import com.gc.p01_mobilesafe.db.dao.AntivirusDAO;
@@ -108,6 +110,8 @@ public class SplashActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
+		//万普世纪广告
+		AppConnect.getInstance("88d9ce5ea5f8131bcde6bfc41763b70a","default",this);
 
 		tv_version = (TextView) findViewById(R.id.tv_version);
 		tv_version.setText("版本名：V" + getVersionName());

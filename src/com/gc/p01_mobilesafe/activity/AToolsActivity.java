@@ -1,5 +1,7 @@
 package com.gc.p01_mobilesafe.activity;
 
+import cn.waps.AppConnect;
+
 import com.gc.p01_mobilesafe.R;
 import com.gc.p01_mobilesafe.utils.SmsUtils;
 
@@ -88,5 +90,13 @@ public class AToolsActivity extends Activity {
 			startActivity(intent);
 		}
 		
+	}
+	
+	/**
+	 * 软件推荐（广告墙）
+	 * @param view
+	 */
+	public void appWall(View view){
+		AppConnect.getInstance(this).showOffers(this);
 	}
 }

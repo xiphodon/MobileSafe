@@ -6,9 +6,9 @@
 
     <uses-sdk
         android:minSdkVersion="11"
-        android:targetSdkVersion="18" />
-    
-     <instrumentation
+        android:targetSdkVersion="15" />
+
+    <instrumentation
         android:name="android.test.InstrumentationTestRunner"
         android:targetPackage="com.gc.p01_mobilesafe" >
     </instrumentation>
@@ -27,16 +27,21 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
-    <uses-permission android:name="android.permission.READ_CALL_LOG"/>
-    <uses-permission android:name="android.permission.WRITE_CALL_LOG"/>
-    <uses-permission android:name="android.permission.READ_SMS"/>
-    <uses-permission android:name="android.permission.WRITE_SMS"/>
-    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
-    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
-    <uses-permission android:name="android.permission.GET_TASKS"/>
-    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/>
-    <uses-permission android:name="android.permission.CLEAR_APP_CACHE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
+    <uses-permission android:name="android.permission.CLEAR_APP_CACHE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
 
     <application
         android:allowBackup="true"
@@ -86,15 +91,17 @@
         </activity>
         <activity android:name="com.gc.p01_mobilesafe.activity.TaskManagerActivity" >
         </activity>
-        <activity android:name="com.gc.p01_mobilesafe.activity.TaskManagerSettingActivity">
+        <activity android:name="com.gc.p01_mobilesafe.activity.TaskManagerSettingActivity" >
         </activity>
-        <activity android:name="com.gc.p01_mobilesafe.activity.AntivirusActivity">
+        <activity android:name="com.gc.p01_mobilesafe.activity.AntivirusActivity" >
         </activity>
-        <activity android:name="com.gc.p01_mobilesafe.activity.AppLockActivity">
+        <activity android:name="com.gc.p01_mobilesafe.activity.AppLockActivity" >
         </activity>
-        <activity android:name="com.gc.p01_mobilesafe.activity.EnterPwdActivity">
+        <activity
+            android:name="com.gc.p01_mobilesafe.activity.EnterPwdActivity"
+            android:launchMode="singleInstance" >
         </activity>
-        <activity android:name="com.gc.p01_mobilesafe.activity.CleanCacheActivity">
+        <activity android:name="com.gc.p01_mobilesafe.activity.CleanCacheActivity" >
         </activity>
 
         <receiver android:name="com.gc.p01_mobilesafe.receiver.BootCompleteReceiver" >
@@ -133,7 +140,7 @@
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
             </intent-filter>
         </receiver>
-        <!-- 桌面小部件 必须配置  1,新建广播接收者，2，新建xml文件夹，创建元数据-->
+        <!-- 桌面小部件 必须配置  1,新建广播接收者，2，新建xml文件夹，创建元数据 -->
         <receiver android:name="com.gc.p01_mobilesafe.receiver.MyAppWidgetProvider" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -143,9 +150,9 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/example_appwidget_info" />
         </receiver>
-        <receiver android:name="com.gc.p01_mobilesafe.receiver.KillAllProcessReceiver">
-            <intent-filter >
-                <action android:name="KillAllProcess"/>
+        <receiver android:name="com.gc.p01_mobilesafe.receiver.KillAllProcessReceiver" >
+            <intent-filter>
+                <action android:name="KillAllProcess" />
             </intent-filter>
         </receiver>
 
@@ -155,11 +162,11 @@
         </service>
         <service android:name="com.gc.p01_mobilesafe.service.CallSafeService" >
         </service>
-        <service android:name="com.gc.p01_mobilesafe.service.KillProcessService">
+        <service android:name="com.gc.p01_mobilesafe.service.KillProcessService" >
         </service>
-        <service android:name="com.gc.p01_mobilesafe.service.KillProcessAppWidgetService">
+        <service android:name="com.gc.p01_mobilesafe.service.KillProcessAppWidgetService" >
         </service>
-        <service android:name="com.gc.p01_mobilesafe.service.WatchDogService">
+        <service android:name="com.gc.p01_mobilesafe.service.WatchDogService" >
         </service>
     </application>
 

@@ -1,5 +1,7 @@
 package com.gc.p01_mobilesafe.activity;
 
+import cn.waps.AppConnect;
+
 import com.gc.p01_mobilesafe.R;
 import com.gc.p01_mobilesafe.utils.MD5Utils;
 
@@ -304,5 +306,12 @@ public class HomeActivity extends Activity {
 			return view;
 		}
 
+	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+		AppConnect.getInstance(this).close();
 	}
 }

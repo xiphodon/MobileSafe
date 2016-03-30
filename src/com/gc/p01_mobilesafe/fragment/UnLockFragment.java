@@ -68,7 +68,7 @@ public class UnLockFragment extends Fragment {
 			//该应用是否在加锁数据库中
 			if (appLockDAO.find(appInfo.getApkPackageName())) {
 
-			} else {
+			} else if(appInfo.isUserApp()){
 				unLockList.add(appInfo);
 			}
 		}
