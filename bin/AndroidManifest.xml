@@ -103,6 +103,8 @@
         </activity>
         <activity android:name="com.gc.p01_mobilesafe.activity.CleanCacheActivity" >
         </activity>
+        <activity android:name="com.gc.p01_mobilesafe.activity.TrafficManagerActivity">
+        </activity>
 
         <receiver android:name="com.gc.p01_mobilesafe.receiver.BootCompleteReceiver" >
             <intent-filter android:priority="2147483647" >

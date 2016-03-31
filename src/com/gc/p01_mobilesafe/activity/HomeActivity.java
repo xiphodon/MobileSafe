@@ -86,6 +86,12 @@ public class HomeActivity extends Activity {
 							TaskManagerActivity.class));
 					break;
 					
+				// 流量统计
+				case 4:
+					startActivity(new Intent(HomeActivity.this,
+							TrafficManagerActivity.class));
+					break;
+					
 				// 病毒查杀
 				case 5:
 					startActivity(new Intent(HomeActivity.this,
