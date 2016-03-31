@@ -94,7 +94,7 @@ public class CleanCacheActivity extends Activity {
 					getCacheSize(packageInfo);
 				}
 				//等待上面for循环中的各个子线程执行结束
-				SystemClock.sleep(3000);
+				SystemClock.sleep(5000);
 
 				// 遍历结束，通知UI线程，ListView加载adapter
 				handler.sendEmptyMessage(0);
